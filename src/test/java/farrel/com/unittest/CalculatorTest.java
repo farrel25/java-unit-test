@@ -1,13 +1,19 @@
 package farrel.com.unittest;
 
+import farrel.com.unittest.generator.SimpleDisplayNameGenerator;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+//@DisplayName("Test For Calculator Class")
+@DisplayNameGeneration(value = SimpleDisplayNameGenerator.class)
 public class CalculatorTest {
 
     private final Calculator calculator = new Calculator();
 
     @Test
+    //@DisplayName("Test Success Scenario of method add(Integer, Integer)")
     public void testAddSuccess() {
         Integer result = calculator.add(10, 20);
 
