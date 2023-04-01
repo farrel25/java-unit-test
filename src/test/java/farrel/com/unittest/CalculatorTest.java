@@ -2,6 +2,9 @@ package farrel.com.unittest;
 
 import farrel.com.unittest.generator.SimpleDisplayNameGenerator;
 import org.junit.jupiter.api.*;
+import org.opentest4j.TestAbortedException;
+
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -61,5 +64,16 @@ public class CalculatorTest {
     @Disabled
     public void testComingSoon() {
 
+    }
+
+    @Test
+    public void testAborted() {
+        String profile = System.getenv("PROFILE");
+        //System.out.println("profile: " + profile);
+        if (!"DEV".equals(profile)) {
+            throw new TestAbortedException("Test was cancelled because not DEV");
+        }
+
+        // unit test for dev
     }
 }
