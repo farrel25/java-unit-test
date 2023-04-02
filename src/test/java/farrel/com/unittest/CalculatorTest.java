@@ -7,6 +7,7 @@ import org.opentest4j.TestAbortedException;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assumptions.*;
 
 //@DisplayName("Test For Calculator Class")
 @DisplayNameGeneration(value = SimpleDisplayNameGenerator.class)
@@ -73,6 +74,13 @@ public class CalculatorTest {
         if (!"DEV".equals(profile)) {
             throw new TestAbortedException("Test was cancelled because not DEV");
         }
+
+        // unit test for dev
+    }
+
+    @Test
+    public void testAssumptions() {
+        assumeTrue("DEV".equals(System.getenv("PROFILE")));
 
         // unit test for dev
     }
