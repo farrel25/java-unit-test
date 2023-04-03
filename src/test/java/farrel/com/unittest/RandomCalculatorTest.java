@@ -9,12 +9,12 @@ import org.junit.jupiter.api.extension.Extensions;
 import java.util.Random;
 
 //@ExtendWith(value = RandomParameterResolver.class)
-@Extensions(value = {
-        @ExtendWith(value = RandomParameterResolver.class)
-})
-public class RandomCalculatorTest {
+//@Extensions(value = {
+//        @ExtendWith(value = RandomParameterResolver.class)
+//})
+public class RandomCalculatorTest extends AbstractCalculatorTest {
 
-    private Calculator calculator = new Calculator();
+    //private final Calculator calculator = new Calculator();
 
     @Test
     void testRandom(Random random) {
