@@ -4,6 +4,7 @@ import farrel.com.unittest.data.Person;
 import farrel.com.unittest.repository.PersonRepository;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class PersonService {
 
@@ -15,11 +16,13 @@ public class PersonService {
 
     public Person get(String id) {
         Person person = personRepository.selectById(id);
+        if (Objects.isNull(person)) throw new IllegalArgumentException("Person not found");
+        return person;
+    }
 
-        if (Objects.nonNull(person)) {
-            return person;
-        } else {
-            throw new IllegalArgumentException("Person not found");
-        }
+    public Person register(String name) {
+        Person person = new Person(UUID.randomUUID().toString(), name);
+        personRepository.insert(person);
+        return person;
     }
 }
